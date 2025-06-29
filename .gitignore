@@ -1,1 +1,3 @@
 /node_modules
+proj/src/environments/environment.ts
+proj/src/environments/environment.prod.ts

@@ -230,6 +230,15 @@
         </defs>
       </svg>
       <h1>Hello, {{ title }}</h1>
+      <div *ngIf="user$ | async as user; else noUser" class="user-info">
+        <p>こんにちは、<strong>{{ user.email }}</strong> さん！</p>
+        <p>UID: <code>{{ user.uid }}</code></p>
+      </div>
+      <ng-template #noUser class="no-user-info">
+        <p>現在、ログインしているユーザーはいません。</p>
+        <p>Firebase Authentication との接続はできています。</p>
+        <p>(ユーザーがいないため、メールアドレスなどは表示されません)</p>
+      </ng-template>
       <p>Congratulations! Your app is running. 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
