@@ -1,19 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Auth, User, user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { AuthButton } from './component/auth-button/auth-button';
+import { AuthService } from '../../service/auth.service';
+
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, AuthButton],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  selector: 'app-auth-button',
+  imports: [CommonModule],
+  templateUrl: './auth-button.html',
+  styleUrl: './auth-button.scss'
 })
-export class App {
+export class AuthButton {
   user$: Observable<User | null>;
   constructor(
     private auth: Auth,
+    private authService: AuthService
   ){
     this.user$ = user(this.auth);
     this.user$.subscribe((currentUser: any) => {
@@ -24,5 +25,12 @@ export class App {
       }
     });
   }
-  protected title = 'proj';
+
+  login(){
+    this.authService.login();
+  }
+
+  logout(){
+    this.authService.logout();
+  }
 }
