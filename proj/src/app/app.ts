@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AuthButton } from './component/auth-button/auth-button';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClient  } from '@angular/common/http';
+import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   imports: [
@@ -20,6 +22,7 @@ export class App {
   user$: Observable<User | null>;
   constructor(
     private auth: Auth,
+    private http: HttpClient,
   ){
     this.user$ = user(this.auth);
     this.user$.subscribe((currentUser: any) => {
@@ -33,6 +36,8 @@ export class App {
   protected title = 'proj';
 
   startAnalysis(){
-
+    this.http.get(environment.apiUrl + '/analysis').subscribe(res => {
+      console.log(res);
+    })
   }
 }
