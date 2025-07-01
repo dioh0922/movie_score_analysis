@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { Auth, User, user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../service/auth.service';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-auth-button',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './auth-button.html',
   styleUrl: './auth-button.scss'
 })

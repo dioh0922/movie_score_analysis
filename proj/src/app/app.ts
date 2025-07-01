@@ -4,9 +4,15 @@ import { Auth, User, user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AuthButton } from './component/auth-button/auth-button';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, AuthButton],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    AuthButton,
+    MatButtonModule,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -25,4 +31,8 @@ export class App {
     });
   }
   protected title = 'proj';
+
+  startAnalysis(){
+
+  }
 }
