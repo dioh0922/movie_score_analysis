@@ -40,5 +40,5 @@ export async function readData(){
       attributes: ['category_name']
     }
   });
-  return result;
+  return result.map((item: any) => item.get({plain: true}));
 }

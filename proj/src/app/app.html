@@ -14,7 +14,13 @@
       <app-auth-button></app-auth-button>
     </div>
     <div>
-      <button matButton="filled" (click)="startAnalysis()">解析</button>
+      <div>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <span [innerHTML]="detail"></span>
+      </div>
+      <div>
+        <button matButton="filled" (click)="startAnalysis()" [disabled]="isLoading">解析</button>
+      </div>
     </div>
 
   </div>
