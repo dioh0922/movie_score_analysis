@@ -1,25 +1,26 @@
 <style>
-.center-container {
-  display: flex;
-  justify-content: center;  /* 横方向中央 */
-  align-items: center;      /* 縦方向中央 */
-  height: 100vh;            /* 画面の高さ全体 */
-  background: #f5f5f5;
+.container{
+  margin: 20px;
+  padding-bottom: 10px;
 }
 </style>
 
 <main class="main">
-  <div class="">
+  <div class="container">
     <div>
       <app-auth-button></app-auth-button>
     </div>
-    <div>
+    <div *ngIf="isLogin">
       <div>
         <mat-spinner *ngIf="isLoading"></mat-spinner>
         <span [innerHTML]="detail"></span>
       </div>
       <div>
-        <button matButton="filled" (click)="startAnalysis()" [disabled]="isLoading">解析</button>
+        <button
+        matButton="filled"
+        (click)="startAnalysis()"
+        *ngIf="detail == null"
+        [disabled]="isLoading">解析</button>
       </div>
     </div>
 
