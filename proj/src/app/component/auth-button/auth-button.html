@@ -1,0 +1,9 @@
+<div *ngIf="user$ | async as user; else notLoggedIn">
+  <p>ログインユーザ：{{ user.displayName }}</p>
+  <button mat-raised-button (click)="logout()">ログアウト</button>
+</div>
+
+<ng-template #notLoggedIn>
+  <p>ログインしていません。</p>
+  <button mat-raised-button (click)="login()">ログイン</button>
+</ng-template>
